@@ -2,3 +2,6 @@
 	path = libft
 	url = https://github.com/nytsdayo/Libft.git
 
+[submodule "ft_printf"]
+	path = ft_printf
+	url = https://github.com/nytsdayo/ft_printf.git

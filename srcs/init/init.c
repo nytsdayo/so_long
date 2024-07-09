@@ -1,37 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/08 22:10:39 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/08 22:13:19 by rnakatan         ###   ########.fr       */
+/*   Created: 2024/07/09 18:59:00 by rnakatan          #+#    #+#             */
+/*   Updated: 2024/07/09 20:07:09 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
-
-char	**read_map(int fd)
-{
-	char	**map;
-	int		i;
-
-	if (fd < 0)
-		return (NULL);
-	map = (char **)malloc(sizeof(char *) * 1);
-	if (!map)
-		return (NULL);
-	i = 0;
-	map[i] = get_next_line(fd);
-	while (map[i] != NULL)
-	{
-		i++;
-		map = ft_realloc(map, sizeof(char *) * (i + 1));
-		map[i] = get_next_line(fd);
-		if (!map)
-			return (NULL);
-	}
-	close(fd);
-	return (map);
-}
+#include "../../includes/so_long.h"

@@ -6,11 +6,11 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 07:47:55 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/08 22:09:30 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/09 19:46:12 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/draw.h"
 
 void	*return_null_and_free(char *char_a, char *char_b);
 char	*ft_readline(int fd);

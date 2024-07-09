@@ -1,4 +1,6 @@
-#include "../includes/so_long.h"
+#include "../includes/draw.h"
+#include "../includes/games.h"
+#include "../includes/player.h"
 
 int	count_lines(char **map)
 {

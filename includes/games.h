@@ -14,7 +14,7 @@ typedef struct s_point
 }			t_point;
 typedef struct s_map
 {
-	char	**map;
+	char	**body;
 	int		width;
 	int		height;
 }			t_map;

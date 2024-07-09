@@ -20,8 +20,11 @@ typedef struct s_assets
 	void	*collectible;
 }			t_assets;
 
-char		**read_map(int fd);
+void		create_map(t_game *game, char *filename);
+void		read_map(int fd, t_map *map);
 void		draw_map(t_game *game);
 void		set_images(t_game *game, t_assets *assets);
 char		*get_next_line(int fd);
+void		set_hooks(t_game *game);
+
 #endif

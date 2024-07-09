@@ -24,6 +24,7 @@ void		create_map(t_game *game, char *filename);
 void		read_map(int fd, t_map *map);
 void		draw_map(t_game *game);
 void		set_images(t_game *game, t_assets *assets);
+void		set_player(t_game *game, t_point *point, void *asset);
 char		*get_next_line(int fd);
 void		set_hooks(t_game *game);
 

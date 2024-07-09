@@ -6,10 +6,10 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:49:39 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/09 20:07:09 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/09 20:31:33 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	check_map(char **map)
-{
-}
+// void	check_map(char **map)
+// {
+// }

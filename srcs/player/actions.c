@@ -20,46 +20,66 @@ void	press_ESC(t_game *game)
 	exit(0);
 }
 
-void	move_forward(t_game *game)
+void	move_forward(t_game *game, int *p_x, int *p_y)
 {
-	game->player->point->y -= 1;
-	if (game->player->point->y < 1)
-		game->player->point->y = 1;
-	mlx_put_image_to_window(game->mlx, game->win, game->player->asset,
-		game->player->point->x * TILE_SIZE, game->player->point->y * TILE_SIZE);
+	int	x;
+	int	y;
+
+	x = *p_x;
+	y = *p_y - 1;
+	if (game->map.body[y][x] != WALL)
+	{
+		*p_y -= 1;
+		mlx_put_image_to_window(game->mlx, game->win, game->player->asset, x
+			* TILE_SIZE, y * TILE_SIZE);
+	}
 	ft_printf("%d, %d\n", game->player->point->x, game->player->point->y);
-	printf("Move forward\n");
 }
 
-void	move_backward(t_game *game)
+void	move_backward(t_game *game, int *p_x, int *p_y)
 {
-	game->player->point->y += 1;
-	if (game->player->point->y > game->map->height - 2)
-		game->player->point->y = game->map->height - 2;
-	mlx_put_image_to_window(game->mlx, game->win, game->player->asset,
-		game->player->point->x * TILE_SIZE, game->player->point->y * TILE_SIZE);
+	int	x;
+	int	y;
+
+	x = *p_x;
+	y = *p_y + 1;
+	if (game->map.body[y][x] != WALL)
+	{
+		*p_y += 1;
+		mlx_put_image_to_window(game->mlx, game->win, game->player->asset, x
+			* TILE_SIZE, y * TILE_SIZE);
+	}
 	ft_printf("%d, %d\n", game->player->point->x, game->player->point->y);
-	printf("Move backward\n");
 }
 
-void	move_left(t_game *game)
+void	move_left(t_game *game, int *p_x, int *p_y)
 {
-	game->player->point->x -= 1;
-	if (game->player->point->x < 1)
-		game->player->point->x = 1;
-	mlx_put_image_to_window(game->mlx, game->win, game->player->asset,
-		game->player->point->x * TILE_SIZE, game->player->point->y * TILE_SIZE);
+	int	x;
+	int	y;
+
+	x = *p_x - 1;
+	y = *p_y;
+	if (game->map.body[y][x] != WALL)
+	{
+		*p_x -= 1;
+		mlx_put_image_to_window(game->mlx, game->win, game->player->asset, x
+			* TILE_SIZE, y * TILE_SIZE);
+	}
 	ft_printf("%d, %d\n", game->player->point->x, game->player->point->y);
-	printf("Move left\n");
 }
 
-void	move_right(t_game *game)
+void	move_right(t_game *game, int *p_x, int *p_y)
 {
-	game->player->point->x += 1;
-	if (game->player->point->x > game->map->width - 2)
-		game->player->point->x = game->map->width - 2;
-	mlx_put_image_to_window(game->mlx, game->win, game->player->asset,
-		game->player->point->x * TILE_SIZE, game->player->point->y * TILE_SIZE);
+	int x;
+	int y;
+
+	x = *p_x + 1;
+	y = *p_y;
+	if (game->map.body[y][x] != WALL)
+	{
+		*p_x += 1;
+		mlx_put_image_to_window(game->mlx, game->win, game->player->asset, x
+			* TILE_SIZE, y * TILE_SIZE);
+	}
 	ft_printf("%d, %d\n", game->player->point->x, game->player->point->y);
-	printf("Move right\n");
 }

@@ -7,6 +7,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define TILE_SIZE 32
+# define WALL '1'
+# define FLOOR '0'
+# define PLAYER 'P'
+# define GOAL 'E'
+# define COLLECTIBLE 'C'
 
 typedef struct s_point
 {
@@ -31,7 +36,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*win;
 	void		*img;
-	t_map		*map;
+	t_map		map;
 	t_player	*player;
 }				t_game;
 #endif

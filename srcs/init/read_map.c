@@ -6,32 +6,34 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 22:10:39 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/09 21:03:20 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/10 01:45:14 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/draw.h"
 
-void	read_map(int fd, t_map *map)
+char	**read_map(char *filename)
 {
-	int	i;
+	int		fd;
+	int		i;
+	char	**map;
 
+	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		return ;
-	map->body = malloc(sizeof(char *) * 1);
-	if (!map->body)
-		return ;
+		return (NULL);
+	map = malloc(sizeof(char *) * 1);
+	if (!map)
+		return (NULL);
 	i = 0;
-	map->body[i] = get_next_line(fd);
-	while (map->body[i] != NULL)
+	map[i] = get_next_line(fd);
+	while (map[i] != NULL)
 	{
 		i++;
-		map->body = ft_realloc(map->body, sizeof(char *) * (i + 1));
-		if (!map->body)
-			return ;
-		map->body[i] = get_next_line(fd);
-		if (!map)
-			return ;
+		map = ft_realloc(map, sizeof(char *) * (i + 1));
+		if (map == NULL)
+			return (NULL);
+		map[i] = get_next_line(fd);
 	}
 	close(fd);
+	return (map);
 }

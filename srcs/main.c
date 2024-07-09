@@ -23,7 +23,7 @@ int	count_columns(char **map)
 		i++;
 	}
 	ft_printf("columns: %d\n", i);
-	return (i);
+	return (i - 1);
 }
 
 int	main(int argc, char **argv)
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	t_game	*game;
 
 	if (argc != 2)
-		return (ft_printf("Error\n"), 1);
+		return (perror("Error"), 1);
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (ft_printf("Error\n"), 1);
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, game->map->width * TILE_SIZE,
 			game->map->height * TILE_SIZE, "so_long");
-	// draw_map(game);
+	draw_map(game);
 	set_hooks(game);
 	mlx_loop(game->mlx);
 	free(game);

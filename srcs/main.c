@@ -1,33 +1,52 @@
-#include "so_long.h"
+#include "../includes/so_long.h"
 
-int	key_hook(int keycode, void *param)
+int	count_lines(char **map)
 {
-	(void)param;
-	if (keycode == 53) // ESCキーのkeycode
-		exit(0);
-	printf("Key pressed: %d\n", keycode);
-	return (0);
+	int	i;
+
+	i = 0;
+	ft_printf("sample\n");
+	while (map[i])
+		i++;
+	return (i);
+}
+
+int	count_columns(char **map)
+{
+	int	i;
+
+	i = 0;
+	ft_printf("sample\n");
+	while (map[0][i])
+	{
+		printf("sample\n");
+		i++;
+	}
+	ft_printf("columns: %d\n", i);
+	return (i);
 }
 
 int	main(int argc, char **argv)
 {
-	t_game *game;
-	char **temp;
+	t_game	*game;
 
-	temp = (char **)malloc(sizeof(char *) * argc);
-	temp = argv;
-
+	if (argc != 2)
+		return (ft_printf("Error\n"), 1);
 	game = (t_game *)malloc(sizeof(t_game));
+	if (!game)
+		return (ft_printf("Error\n"), 1);
+	game->map = (t_map *)malloc(sizeof(t_map));
+	game->map->map = read_map(open(argv[1], O_RDONLY));
+	if (!game->map)
+		return (ft_printf("Error\n"), 1);
+	game->map->width = count_columns(game->map->map);
+	game->map->height = count_lines(game->map->map);
 	game->mlx = mlx_init();
-	game->win = mlx_new_window(game->mlx, 800, 600, "so_long");
-	// win = mlx_new_window(mlx, MAP_WIDTH * TILE_SIZE, MAP_HEIGHT * TILE_SIZE,
-	// 		"My Game");
-	game->win = mlx_new_window(game->mlx, 800, 600, "so_long");
+	game->win = mlx_new_window(game->mlx, game->map->width * TILE_SIZE,
+			game->map->height * TILE_SIZE, "so_long");
+	// draw_map(game);
 	set_hooks(game);
 	mlx_loop(game->mlx);
 	free(game);
-
-	// draw_map(mlx, win);
-
 	return (0);
 }

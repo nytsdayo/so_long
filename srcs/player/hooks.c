@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 00:15:42 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/10 02:26:28 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/10 10:41:35 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	key_press(int keycode, t_game *game)
 		press_ESC(game);
 	else if (keycode == W || keycode == S || keycode == A || keycode == D)
 	{
-		move_player(game, keycode, &game->player->point->x,
-			&game->player->point->y);
+		move_player(game, keycode, &game->player.point.x,
+			&game->player.point.y);
 	}
 	return (0);
 }

@@ -10,6 +10,9 @@ INIT_OBJS = $(INIT_SRCS:$(SRCSDIR)%.c=$(SRCSDIR)%.o)
 PLAYER_SRCS = $(wildcard $(SRCSDIR)player/*.c)
 PLAYER_OBJS = $(PLAYER_SRCS:$(SRCSDIR)%.c=$(SRCSDIR)%.o)
 
+ERROR_SRCS = $(wildcard $(SRCSDIR)error/*.c)
+ERROR_OBJS = $(ERROR_SRCS:$(SRCSDIR)%.c=$(SRCSDIR)%.o)
+
 MAIN_SRC = $(SRCSDIR)main.c
 MAIN_OBJ = $(MAIN_SRC:$(SRCSDIR)%.c=%.o)
 

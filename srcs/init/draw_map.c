@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:31:56 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/10 02:19:32 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/10 10:54:54 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	check_map(t_game *game, t_assets assets)
 	int		j;
 
 	point.y = 0;
+	ft_printf("flag1");
 	while (point.y < game->map.height)
 	{
 		point.x = 0;
@@ -76,7 +77,7 @@ void	check_map(t_game *game, t_assets assets)
 			{
 				mlx_put_image_to_window(game->mlx, game->win, assets.player, i,
 					j);
-				set_player(game, point, assets.player);
+				set_player(&game->player, point, assets.player);
 			}
 			else if (c == 'E')
 				mlx_put_image_to_window(game->mlx, game->win, assets.goal, i,
@@ -88,4 +89,5 @@ void	check_map(t_game *game, t_assets assets)
 		}
 		point.y++;
 	}
+	ft_printf("flag2");
 }

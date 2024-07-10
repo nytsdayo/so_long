@@ -26,7 +26,7 @@ typedef struct s_map
 }				t_map;
 typedef struct s_player
 {
-	t_point		*point;
+	t_point		point;
 	int			cnt_collectibles;
 	int			cnt_moves;
 	void		*asset;
@@ -37,6 +37,6 @@ typedef struct s_game
 	void		*win;
 	void		*img;
 	t_map		map;
-	t_player	*player;
+	t_player	player;
 }				t_game;
 #endif

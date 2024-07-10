@@ -23,7 +23,7 @@ typedef struct s_assets
 void		create_map(t_game *game, char *filename);
 char		**read_map(char *filename);
 void		draw_map(t_game *game);
-void		set_player(t_game *game, t_point point, void *asset);
+void		set_player(t_player *player, t_point point, void *asset);
 char		*get_next_line(int fd);
 void		set_hooks(t_game *game);
 

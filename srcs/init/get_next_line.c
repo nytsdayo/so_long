@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 07:47:55 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/09 19:46:12 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/12 07:12:41 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_next_line(int fd)
 	static char	*save = NULL;
 	char		*temp;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!save)
 		save = ft_strdup("");

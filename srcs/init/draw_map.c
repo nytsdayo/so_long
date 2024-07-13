@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 10:31:56 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/10 10:54:54 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/13 14:01:04 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ void		check_map(t_game *game, t_assets assets);
 
 void	draw_map(t_game *game)
 {
-	t_assets	assets;
-
-	assets = set_images(game);
-	check_map(game, assets);
+	game->map.assets = set_images(game);
+	check_map(game, game->map.assets);
 }
 
 t_assets	set_images(t_game *game)
@@ -75,9 +73,11 @@ void	check_map(t_game *game, t_assets assets)
 					j);
 			else if (c == 'P')
 			{
+				ft_printf("flag4");
 				mlx_put_image_to_window(game->mlx, game->win, assets.player, i,
 					j);
-				set_player(&game->player, point, assets.player);
+				set_player(game, point, assets.player);
+				ft_printf("flag3");
 			}
 			else if (c == 'E')
 				mlx_put_image_to_window(game->mlx, game->win, assets.goal, i,

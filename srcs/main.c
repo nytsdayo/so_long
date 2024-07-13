@@ -10,6 +10,6 @@ int	main(int argc, char **argv)
 		return (perror("Error"), 1);
 	create_map(&game, argv[1]);
 	set_hooks(&game);
-	mlx_loop(&game.mlx);
+	mlx_loop(game.mlx);
 	return (0);
 }

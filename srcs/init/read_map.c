@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 22:10:39 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/10 01:45:14 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/12 16:39:37 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	**read_map(char *filename)
 	map[i] = get_next_line(fd);
 	while (map[i] != NULL)
 	{
+		if (ft_strchr(map[i], '\n') != NULL)
+			map[i][ft_strlen(map[i]) - 1] = '\0';
 		i++;
 		map = ft_realloc(map, sizeof(char *) * (i + 1));
 		if (map == NULL)

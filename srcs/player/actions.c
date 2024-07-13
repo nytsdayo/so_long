@@ -13,10 +13,12 @@
 
 #include "../../includes/player.h"
 
+void	draw_big_string(void *mlx, void *win, int x, int y, int color,
+			char *string);
 void	press_ESC(t_game *game)
 {
 	printf("Exit game\n");
-	mlx_destroy_window(game->mlx, game->win);
+	exit_game(game);
 	exit(0);
 }
 
@@ -27,14 +29,18 @@ void	move_forward(t_game *game, int *p_x, int *p_y)
 
 	x = *p_x;
 	y = *p_y - 1;
-	ft_printf("x: %d, y: %d\n", x, y);
-	if (game->map.body[y][x] != WALL)
+	if (move_check(game, x, y))
 	{
 		*p_y -= 1;
+		game->player.cnt_collectibles -= collectible_check(game, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->player.asset, x
 			* TILE_SIZE, y * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx, game->win, game->map.assets.floor, x
+			* TILE_SIZE, (y + 1) * TILE_SIZE);
+		if (exit_check(game, x, y))
+			exit_success_game(game);
+		game->player.cnt_moves++;
 	}
-	ft_printf("%d, %d\n", game->player.point.x, game->player.point.y);
 }
 
 void	move_backward(t_game *game, int *p_x, int *p_y)
@@ -44,13 +50,18 @@ void	move_backward(t_game *game, int *p_x, int *p_y)
 
 	x = *p_x;
 	y = *p_y + 1;
-	if (game->map.body[y][x] != WALL)
+	if (move_check(game, x, y))
 	{
 		*p_y += 1;
+		game->player.cnt_collectibles -= collectible_check(game, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->player.asset, x
 			* TILE_SIZE, y * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx, game->win, game->map.assets.floor, x
+			* TILE_SIZE, (y - 1) * TILE_SIZE);
+		if (exit_check(game, x, y))
+			exit_success_game(game);
+		game->player.cnt_moves++;
 	}
-	ft_printf("%d, %d\n", game->player.point.x, game->player.point.y);
 }
 
 void	move_left(t_game *game, int *p_x, int *p_y)
@@ -60,27 +71,41 @@ void	move_left(t_game *game, int *p_x, int *p_y)
 
 	x = *p_x - 1;
 	y = *p_y;
-	if (game->map.body[y][x] != WALL)
+	if (move_check(game, x, y))
 	{
 		*p_x -= 1;
+		game->player.cnt_collectibles -= collectible_check(game, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->player.asset, x
 			* TILE_SIZE, y * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx, game->win, game->map.assets.floor, (x
+				+ 1) * TILE_SIZE, y * TILE_SIZE);
+		game->player.cnt_moves++;
+		mlx_string_put(game->mlx, game->win, TILE_SIZE / 2, TILE_SIZE / 2,
+			0xFF22FF, ft_itoa(game->player.cnt_moves));
+		if (exit_check(game, x, y))
+			exit_success_game(game);
 	}
-	ft_printf("%d, %d\n", game->player.point.x, game->player.point.y);
 }
 
 void	move_right(t_game *game, int *p_x, int *p_y)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = *p_x + 1;
 	y = *p_y;
-	if (game->map.body[y][x] != WALL)
+	if (move_check(game, x, y))
 	{
 		*p_x += 1;
+		game->player.cnt_collectibles -= collectible_check(game, x, y);
 		mlx_put_image_to_window(game->mlx, game->win, game->player.asset, x
 			* TILE_SIZE, y * TILE_SIZE);
+		mlx_put_image_to_window(game->mlx, game->win, game->map.assets.floor, (x
+				- 1) * TILE_SIZE, y * TILE_SIZE);
+		game->player.cnt_moves++;
+		mlx_string_put(game->mlx, game->win, TILE_SIZE, TILE_SIZE, 0xFF22FF,
+			ft_itoa(game->player.cnt_moves));
+		if (exit_check(game, x, y))
+			exit_success_game(game);
 	}
-	ft_printf("%d, %d\n", game->player.point.x, game->player.point.y);
 }

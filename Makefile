@@ -1,4 +1,4 @@
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
 
@@ -14,30 +14,31 @@ ERROR_SRCS = $(wildcard $(SRCSDIR)error/*.c)
 ERROR_OBJS = $(ERROR_SRCS:$(SRCSDIR)%.c=$(SRCSDIR)%.o)
 
 MAIN_SRC = $(SRCSDIR)main.c
-MAIN_OBJ = $(MAIN_SRC:$(SRCSDIR)%.c=%.o)
+MAIN_OBJ = $(MAIN_SRC:$(SRCSDIR)%.c=$(SRCSDIR)%.o)
 
-SRCS = $(INIT_SRCS) $(PLAYER_SRCS) $(MAIN_SRC)
-OBJS = $(INIT_OBJS) $(PLAYER_OBJS) $(MAIN_OBJ)
+SRCS = $(INIT_SRCS) $(PLAYER_SRCS) $(MAIN_SRC) $(ERROR_SRCS) 
+OBJS = $(INIT_OBJS) $(PLAYER_OBJS) $(MAIN_OBJ) $(ERROR_OBJS) 
 
-LIBFTDIR = libft
+LIBFTDIR = Libft
 LIBFT = $(LIBFTDIR)/libft.a
 
 FTPRINTFDIR = ft_printf
 FTPRINTF = $(FTPRINTFDIR)/libftprintf.a
 
-MLXDIR = minilibx_opengl
+MLXDIR = minilibx
 MLX = $(MLXDIR)/libmlx.a
 
 INCLUDES = -I./includes -I$(LIBFTDIR) -I$(FTPRINTFDIR) -I$(MLXDIR)
 LIBS = $(LIBFT) $(FTPRINTF) $(MLX)
-FRAMEWORKS = -framework OpenGL -framework AppKit
 
-all: $(NAME)
+FRAMEWORKS = -L$(MLXDIR) -lmlx -lXext -lX11 -lm
+
+all:$(LIBS) $(NAME)
 
 $(NAME): $(OBJS) $(LIBS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(FRAMEWORKS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJS) $(LIBS) $(FRAMEWORKS) -o $(NAME) 
 
-%.o: $(SRCSDIR)%.c
+$(SRCSDIR)%.o: $(SRCSDIR)%.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT):
@@ -49,6 +50,9 @@ $(FTPRINTF):
 $(MLX):
 	$(MAKE) -C $(MLXDIR)
 
+force:
+	@true
+
 clean:
 	rm -f $(OBJS)
 	$(MAKE) -C $(LIBFTDIR) clean
@@ -59,7 +63,8 @@ fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C $(LIBFTDIR) fclean
 	$(MAKE) -C $(FTPRINTFDIR) fclean
+	$(MAKE) -C $(MLXDIR) clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re force

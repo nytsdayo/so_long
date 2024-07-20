@@ -24,7 +24,9 @@ int	main(int argc, char **argv)
 	game.map.body = read_map(argv[1]);
 	if (!game.map.body)
 		exit_error_game(&game);
-	if (is_invalid_map(game.map.body))
+	set_player(&game);
+	set_goal(&game);
+	if (is_invalid_map(&game, game.map.body))
 		exit_error_game(&game);
 	create_map(&game);
 	set_hooks(&game);

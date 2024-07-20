@@ -6,11 +6,11 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 02:15:09 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 23:00:51 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:18:06 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/games.h"
+#include "../includes/games.h"
 
 void	free_map(char **map);
 

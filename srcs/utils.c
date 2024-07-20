@@ -6,11 +6,11 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 20:47:07 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 22:50:34 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:09:29 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/games.h"
+#include "../includes/games.h"
 
 void	*set_image(t_game *game, char *path, t_position *ptrs)
 {

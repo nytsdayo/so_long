@@ -6,11 +6,10 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:56:45 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 21:51:40 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:01:04 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/draw.h"
 #include "../../includes/games.h"
 
 int		is_invalid_symbol(char c);

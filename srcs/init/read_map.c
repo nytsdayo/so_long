@@ -6,11 +6,10 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 22:10:39 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 13:19:03 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:42:52 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/draw.h"
 #include "../../includes/games.h"
 
 char	**read_map(char *filename)

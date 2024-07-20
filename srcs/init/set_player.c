@@ -6,14 +6,11 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 21:24:29 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 21:23:42 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:47:03 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Libft/libft.h"
-#include "../../includes/draw.h"
 #include "../../includes/games.h"
-#include "../../includes/player.h"
 
 void	set_player(t_game *game)
 {

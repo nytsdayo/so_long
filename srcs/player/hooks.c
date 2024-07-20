@@ -6,11 +6,11 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 00:15:42 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 22:09:41 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:48:43 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/player.h"
+#include "../../includes/games.h"
 
 int		key_press(int keycode, t_game *game);
 void	move_player(t_game *game, int keycode, t_position *pos);

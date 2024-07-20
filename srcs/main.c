@@ -1,6 +1,5 @@
-#include "../includes/draw.h"
+
 #include "../includes/games.h"
-#include "../includes/player.h"
 
 void	init_game(t_game *game)
 {

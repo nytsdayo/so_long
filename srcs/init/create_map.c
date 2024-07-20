@@ -6,12 +6,10 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:59:00 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 21:29:13 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:47:18 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Libft/libft.h"
-#include "../../includes/draw.h"
 #include "../../includes/games.h"
 
 t_assets	set_images(t_game *game);

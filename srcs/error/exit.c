@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 02:15:09 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 14:47:39 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:00:51 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	exit_error_game(t_game *game)
 }
 void	free_map(char **map)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (map[i])

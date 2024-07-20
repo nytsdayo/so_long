@@ -6,11 +6,11 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 22:21:54 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/13 14:04:29 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:47:41 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/player.h"
+#include "../../includes/games.h"
 
 int	collectible_check(t_game *game, int x, int y)
 {

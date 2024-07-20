@@ -6,11 +6,11 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 07:47:55 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/12 07:12:41 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:46:55 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/draw.h"
+#include "../../includes/games.h"
 
 void	*return_null_and_free(char *char_a, char *char_b);
 char	*ft_readline(int fd);

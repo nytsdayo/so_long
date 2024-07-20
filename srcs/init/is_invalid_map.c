@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/20 12:56:45 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 23:01:04 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:26:57 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	separate_check(char **map, t_player player)
 	{
 		check_map[map_pos.y] = ft_strdup(map[map_pos.y]);
 		if (!check_map[map_pos.y])
-			return (1);
+			return (free_map(check_map), 1);
 		map_pos.y++;
 	}
 	flood_fill(check_map, player.point);
@@ -83,12 +83,12 @@ int	separate_check(char **map, t_player player)
 			if (check_map[map_pos.y][map_pos.x] == FLOOR
 				|| check_map[map_pos.y][map_pos.x] == GOAL
 				|| check_map[map_pos.y][map_pos.x] == COLLECTIBLE)
-				return (1);
+				return (free_map(check_map), 1);
 			map_pos.x++;
 		}
 		map_pos.y++;
 	}
-	return (0);
+	return (free_map(check_map), 0);
 }
 
 void	flood_fill(char **map, t_position pos)

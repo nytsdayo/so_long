@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 21:24:29 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/13 14:02:49 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 21:23:42 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,59 @@
 #include "../../includes/games.h"
 #include "../../includes/player.h"
 
-void	set_player(t_game *game, t_point point, void *asset)
+void	set_player(t_game *game)
 {
-	t_player	player;
-	int			i;
-	char		correct_c[2];
+	t_position	map_pos;
 
-	correct_c[0] = COLLECTIBLE;
-	correct_c[1] = '\0';
-	player = game->player;
-	player.point = point;
-	i = 0;
-	while (i < game->map.height)
+	map_pos = (t_position){0, 0};
+	game->player.point = (t_position){0, 0};
+	while (game->map.body[map_pos.y])
 	{
-		ft_printf("game->map.body[i]: %s\n", game->map.body[i]);
-		player.cnt_collectibles += ft_count_words(game->map.body[i], correct_c);
-		i++;
+		map_pos.x = 0;
+		while (game->map.body[map_pos.y][map_pos.x])
+		{
+			if (game->map.body[map_pos.y][map_pos.x] == PLAYER)
+			{
+				if (game->player.point.x != 0 || game->player.point.y != 0)
+					exit_error_game(game);
+				game->player.point = (t_position){map_pos.x, map_pos.y};
+				game->player.asset = game->map.assets.player;
+				game->player.cnt_collectibles = 0;
+				game->player.cnt_moves = 0;
+			}
+			map_pos.x++;
+		}
+		map_pos.y++;
 	}
-	player.cnt_moves = 0;
-	player.asset = asset;
-	game->player = player;
-	ft_printf("set player end\n");
+	if (game->player.point.x == 0 && game->player.point.y == 0)
+		exit_error_game(game);
+}
+
+void	set_goal(t_game *game)
+{
+	t_position	map_pos;
+	int			flag;
+
+	flag = 0;
+	map_pos = (t_position){0, 0};
+	game->goal.point = (t_position){0, 0};
+	while (game->map.body[map_pos.y])
+	{
+		map_pos.x = 0;
+		while (game->map.body[map_pos.y][map_pos.x])
+		{
+			if (game->map.body[map_pos.y][map_pos.x] == GOAL)
+			{
+				if (flag)
+					exit_error_game(game);
+				game->goal.point = (t_position){map_pos.x, map_pos.y};
+				game->goal.asset = game->map.assets.goal;
+				flag = 1;
+			}
+			map_pos.x++;
+		}
+		map_pos.y++;
+	}
+	if (!flag)
+		exit_error_game(game);
 }

@@ -6,14 +6,14 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 00:15:42 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 14:38:04 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:53:32 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/player.h"
 
 int		key_press(int keycode, t_game *game);
-void	move_player(t_game *game, int keycode, t_point *pos);
+void	move_player(t_game *game, int keycode, t_position *pos);
 void	press_ESC(t_game *game);
 
 void	set_hooks(t_game *game)
@@ -32,11 +32,11 @@ int	key_press(int keycode, t_game *game)
 	return (0);
 }
 
-void	move_player(t_game *game, int keycode, t_point *pos)
+void	move_player(t_game *game, int keycode, t_position *pos)
 {
-	t_point	move;
+	t_position	move;
 
-	move = (t_point){0, 0};
+	move = (t_position){0, 0};
 	if (keycode == KEY_W)
 		move.y = -1;
 	else if (keycode == KEY_S)
@@ -48,7 +48,7 @@ void	move_player(t_game *game, int keycode, t_point *pos)
 	if (move_check(game, pos->x + move.x, pos->y + move.y))
 	{
 		draw_image(game, *pos, game->map.assets.floor);
-		*pos = (t_point){pos->x + move.x, pos->y + move.y};
+		*pos = (t_position){pos->x + move.x, pos->y + move.y};
 		game->player.cnt_collectibles -= collectible_check(game, pos->x,
 				pos->y);
 		ft_printf("cnt_collectibles: %d\n", game->player.cnt_collectibles);

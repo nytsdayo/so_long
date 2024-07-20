@@ -1,9 +1,12 @@
 [submodule "libft"]
 	path = Libft
-	url = https://github.com/nytsdayo/Libft.git
+	url = git@github.com:nytsdayo/Libft.git
 [submodule "ft_printf"]
 	path = ft_printf
 	url = https://github.com/nytsdayo/ft_printf.git
 [submodule "minilibx"]
 	path = minilibx
 	url = https://github.com/42Paris/minilibx-linux.git
+[submodule "Libft"]
+	path = Libft
+	url = git@github.com:nytsdayo/Libft.git

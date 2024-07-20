@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 00:15:42 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 20:53:32 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 22:09:41 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ void	move_player(t_game *game, int keycode, t_position *pos)
 		move.x = 1;
 	if (move_check(game, pos->x + move.x, pos->y + move.y))
 	{
-		draw_image(game, *pos, game->map.assets.floor);
+		if (game->map.body[pos->y][pos->x] != 'E')
+			draw_image(game, *pos, game->map.assets.floor);
+		else
+			draw_image(game, *pos, game->map.assets.goal);
 		*pos = (t_position){pos->x + move.x, pos->y + move.y};
 		game->player.cnt_collectibles -= collectible_check(game, pos->x,
 				pos->y);
-		ft_printf("cnt_collectibles: %d\n", game->player.cnt_collectibles);
 		draw_image(game, *pos, game->map.assets.player);
 		game->player.cnt_moves++;
 		ft_printf("cnt_moves: %d\n", game->player.cnt_moves);

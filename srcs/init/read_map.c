@@ -6,11 +6,12 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 22:10:39 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/12 16:39:37 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 13:19:03 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/draw.h"
+#include "../../includes/games.h"
 
 char	**read_map(char *filename)
 {
@@ -31,7 +32,7 @@ char	**read_map(char *filename)
 		if (ft_strchr(map[i], '\n') != NULL)
 			map[i][ft_strlen(map[i]) - 1] = '\0';
 		i++;
-		map = ft_realloc(map, sizeof(char *) * (i + 1));
+		map = ft_realloc(map, sizeof(char *) * i, sizeof(char *) * (i + 1));
 		if (map == NULL)
 			return (NULL);
 		map[i] = get_next_line(fd);

@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:59:00 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 23:37:30 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/21 07:24:29 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ t_assets	set_images(t_game *game)
 
 void	draw_map(t_game *game, t_assets assets)
 {
-	t_position pos;
-	char c;
+	t_position	pos;
+	char		c;
 
 	pos.y = 0;
 	while (pos.y < game->map.height)

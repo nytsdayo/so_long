@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 00:15:42 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 22:48:43 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/21 07:24:03 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		key_press(int keycode, t_game *game);
 void	move_player(t_game *game, int keycode, t_position *pos);
-void	press_ESC(t_game *game);
+void	press_esc(t_game *game);
 
 void	set_hooks(t_game *game)
 {
@@ -25,7 +25,7 @@ void	set_hooks(t_game *game)
 int	key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC)
-		press_ESC(game);
+		press_esc(game);
 	else if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S
 		|| keycode == KEY_D)
 		move_player(game, keycode, &game->player.point);
@@ -62,7 +62,7 @@ void	move_player(t_game *game, int keycode, t_position *pos)
 	}
 }
 
-void	press_ESC(t_game *game)
+void	press_esc(t_game *game)
 {
 	printf("Exit game\n");
 	exit_game(game);

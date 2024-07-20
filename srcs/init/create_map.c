@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:59:00 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 22:47:18 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:37:30 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	create_map(t_game *game)
 	game->win = mlx_new_window(game->mlx, game->map.width * TILE_SIZE,
 			game->map.height * TILE_SIZE, "so_long");
 	if (!game->win)
-		exit_game(game);
+		exit_error_game(game);
 	game->map.assets = set_images(game);
 	draw_map(game, game->map.assets);
 	i = 0;
@@ -43,19 +43,19 @@ t_assets	set_images(t_game *game)
 
 	assets.wall = set_image(game, WALL_PATH, &ptrs);
 	if (!assets.wall)
-		perror("");
+		exit_error_game(game);
 	assets.floor = set_image(game, FLOOR_PATH, &ptrs);
 	if (!assets.floor)
-		perror("");
+		exit_error_game(game);
 	assets.player = set_image(game, PLAYER_PATH, &ptrs);
 	if (!assets.player)
-		perror("");
+		exit_error_game(game);
 	assets.goal = set_image(game, GOAL_PATH, &ptrs);
 	if (!assets.goal)
-		perror("");
+		exit_error_game(game);
 	assets.collectible = set_image(game, COLLECTIBLE_PATH, &ptrs);
 	if (!assets.collectible)
-		perror("");
+		exit_error_game(game);
 	return (assets);
 }
 

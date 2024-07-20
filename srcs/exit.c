@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 02:15:09 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 23:18:06 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 23:35:52 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,9 @@ int	exit_success_game(t_game *game)
 
 int	exit_failure_game(t_game *game)
 {
-	perror("Error!");
+	perror("Exit_game");
 	exit_game(game);
-	exit(EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }
 
 int	exit_error_game(t_game *game)

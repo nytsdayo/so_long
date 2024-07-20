@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 02:15:09 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/13 13:36:08 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/07/20 14:47:39 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,52 @@
 
 void	free_map(char **map);
 
-int	exit_game(t_game *game)
+void	exit_game(t_game *game)
 {
 	if (game->map.body)
 		free_map(game->map.body);
 	if (game->mlx)
-		mlx_destroy_window(game->mlx, game->win);
-	exit(0);
+	{
+		if (game->map.assets.wall)
+		{
+			if (game->map.assets.wall)
+				mlx_destroy_image(game->mlx, game->map.assets.wall);
+			if (game->map.assets.floor)
+				mlx_destroy_image(game->mlx, game->map.assets.floor);
+			if (game->map.assets.player)
+				mlx_destroy_image(game->mlx, game->map.assets.player);
+			if (game->map.assets.goal)
+				mlx_destroy_image(game->mlx, game->map.assets.goal);
+			if (game->map.assets.collectible)
+				mlx_destroy_image(game->mlx, game->map.assets.collectible);
+		}
+		if (game->win)
+			mlx_destroy_window(game->mlx, game->win);
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 }
 
-void	exit_success_game(t_game *game)
+int	exit_success_game(t_game *game)
 {
-	ft_printf("CLEAR!!! Long-tailed Ti\n");
+	ft_printf("CLEAR!!!\n");
 	exit_game(game);
+	exit(EXIT_SUCCESS);
 }
 
+int	exit_failure_game(t_game *game)
+{
+	perror("Error!");
+	exit_game(game);
+	exit(EXIT_FAILURE);
+}
+
+int	exit_error_game(t_game *game)
+{
+	perror("Error!");
+	exit_game(game);
+	exit(EXIT_FAILURE);
+}
 void	free_map(char **map)
 {
 	int	i;

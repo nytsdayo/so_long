@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:59:00 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/08/19 06:18:49 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/08/19 07:30:18 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void	create_map(t_game *game)
 {
 	int	i;
 
+	i = 0;
+	while ((size_t)i < ft_cnt_row(game->map.body))
+	{
+		if (ft_strlen(game->map.body[i]) != ft_cnt_col(game->map.body))
+			exit_error_game(game, "Error\nInvalid map\n");
+		i++;
+	}
 	game->map.width = ft_cnt_col(game->map.body);
 	game->map.height = ft_cnt_row(game->map.body);
 	game->win = mlx_new_window(game->mlx, game->map.width * TILE_SIZE,

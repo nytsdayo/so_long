@@ -40,6 +40,7 @@ char	**read_map(char *filename);
 char	*get_next_line(int fd);
 void	set_hooks(t_game *game);
 int		is_invalid_map(t_game *game, char **map);
+// set_player.c
 void	set_player(t_game *game);
 void	set_goal(t_game *game);
 // action_check.c

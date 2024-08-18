@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 00:15:42 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/21 07:24:03 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/08/19 06:09:15 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,7 @@ void	move_player(t_game *game, int keycode, t_position *pos)
 	t_position	move;
 
 	move = (t_position){0, 0};
-	if (keycode == KEY_W)
-		move.y = -1;
-	else if (keycode == KEY_S)
-		move.y = 1;
-	else if (keycode == KEY_A)
-		move.x = -1;
-	else if (keycode == KEY_D)
-		move.x = 1;
+	what_is_press_key(keycode, &move);
 	if (move_check(game, pos->x + move.x, pos->y + move.y))
 	{
 		if (game->map.body[pos->y][pos->x] != 'E')
@@ -57,7 +50,7 @@ void	move_player(t_game *game, int keycode, t_position *pos)
 		draw_image(game, *pos, game->map.assets.player);
 		game->player.cnt_moves++;
 		ft_printf("cnt_moves: %d\n", game->player.cnt_moves);
-		if (exit_check(game, pos->x, pos->y))
+		if (goal_check(game, pos->x, pos->y))
 			exit_success_game(game);
 	}
 }

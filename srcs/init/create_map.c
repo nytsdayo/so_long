@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 18:59:00 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/21 07:24:29 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/08/19 06:18:49 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	create_map(t_game *game)
 	game->win = mlx_new_window(game->mlx, game->map.width * TILE_SIZE,
 			game->map.height * TILE_SIZE, "so_long");
 	if (!game->win)
-		exit_error_game(game);
+		exit_error_game(game, "Error\nFailed to create window\n");
 	game->map.assets = set_images(game);
 	draw_map(game, game->map.assets);
 	i = 0;
@@ -43,19 +43,19 @@ t_assets	set_images(t_game *game)
 
 	assets.wall = set_image(game, WALL_PATH, &ptrs);
 	if (!assets.wall)
-		exit_error_game(game);
+		exit_error_game(game, "Error\nFailed to set wall image\n");
 	assets.floor = set_image(game, FLOOR_PATH, &ptrs);
 	if (!assets.floor)
-		exit_error_game(game);
+		exit_error_game(game, "Error\nFailed to set floor image\n");
 	assets.player = set_image(game, PLAYER_PATH, &ptrs);
 	if (!assets.player)
-		exit_error_game(game);
+		exit_error_game(game, "Error\nFailed to set player image\n");
 	assets.goal = set_image(game, GOAL_PATH, &ptrs);
 	if (!assets.goal)
-		exit_error_game(game);
+		exit_error_game(game, "Error\nFailed to set goal image\n");
 	assets.collectible = set_image(game, COLLECTIBLE_PATH, &ptrs);
 	if (!assets.collectible)
-		exit_error_game(game);
+		exit_error_game(game, "Error\nFailed to set collectible image\n");
 	return (assets);
 }
 

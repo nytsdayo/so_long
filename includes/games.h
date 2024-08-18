@@ -31,7 +31,7 @@
 void	exit_game(t_game *game);
 int		exit_success_game(t_game *game);
 int		exit_failure_game(t_game *game);
-int		exit_error_game(t_game *game);
+int		exit_error_game(t_game *game, char *message);
 void	free_map(char **map);
 void	*set_image(t_game *game, char *path, t_position *ptrs);
 void	draw_image(t_game *game, t_position pos, void *img);
@@ -40,11 +40,11 @@ char	**read_map(char *filename);
 char	*get_next_line(int fd);
 void	set_hooks(t_game *game);
 int		is_invalid_map(t_game *game, char **map);
-void	set_hooks(t_game *game);
-void	press_ESC(t_game *game);
 void	set_player(t_game *game);
 void	set_goal(t_game *game);
-int		exit_check(t_game *game, int x, int y);
+// action_check.c
+void	what_is_press_key(int keycode, t_position *move);
+int		goal_check(t_game *game, int x, int y);
 int		move_check(t_game *game, int x, int y);
 int		collectible_check(t_game *game, int x, int y);
 #endif

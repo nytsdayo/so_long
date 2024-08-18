@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 20:47:07 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/20 23:09:29 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/08/19 06:27:12 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*set_image(t_game *game, char *path, t_position *ptrs)
 
 	asset = mlx_xpm_file_to_image(game->mlx, path, &ptrs->x, &ptrs->y);
 	if (!asset)
-		exit_error_game(game);
+		exit_error_game(game, "Error\nFailed to set image\n");
 	return (asset);
 }
 

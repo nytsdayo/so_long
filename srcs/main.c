@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 07:16:46 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/07/21 07:16:48 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/08/19 06:26:50 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	game.map.body = read_map(argv[1]);
 	if (!game.map.body)
-		exit_error_game(&game);
+		exit_error_game(&game, "Error\nFailed to read map\n");
 	set_player(&game);
 	set_goal(&game);
 	if (is_invalid_map(&game, game.map.body))
-		exit_error_game(&game);
+		exit_error_game(&game, "Error\nInvalid map\n");
 	create_map(&game);
 	set_hooks(&game);
 	mlx_loop(game.mlx);

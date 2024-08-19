@@ -1,0 +1,5 @@
+libft-tester-tokyo
+*.o
+*.a
+README.md
+*.out

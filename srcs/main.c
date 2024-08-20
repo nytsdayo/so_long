@@ -6,7 +6,7 @@
 /*   By: rnakatan <rnakatan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/21 07:16:46 by rnakatan          #+#    #+#             */
-/*   Updated: 2024/08/19 08:21:47 by rnakatan         ###   ########.fr       */
+/*   Updated: 2024/08/21 02:21:30 by rnakatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (ft_putstr_fd("Error!\nCollect:./so_long <mappath>", 2), 1);
 	if (!ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])))
-		return (ft_putstr_fd("Error!\nInvalid map\n", 2), 1);
+		return (ft_putstr_fd("Error!\nInvalid file extension\n", 2), 1);
 	init_game(&game);
 	game.map.body = read_map(argv[1]);
 	if (!game.map.body)
